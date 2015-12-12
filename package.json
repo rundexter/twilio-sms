@@ -1,12 +1,17 @@
 {
-    "name": "twilio-sms",
-    "version": "0.0.1",
-    "description": "",
-    "main": "index.js",
-    "author": "Daniel Ilkovich",
-    "license": "ISC",
-    "private": true,
-    "dependencies": {
-        "lodash": "^3.9.3"
-    }
+  "name": "twilio-sms",
+  "version": "0.0.1",
+  "description": "Send an SMS message using your Twilio account",
+  "main": "index.js",
+  "author": "Run Dexter, Inc.",
+  "license": "ISC",
+  "private": true,
+  "repository": {
+     "type": "git",
+     "url" : "https://github.com/rundexter/twilio-sms"
+  },
+  "dependencies": {
+    "lodash": "^3.9.3",
+    "twilio": "^2.7.0"
+  }
 }

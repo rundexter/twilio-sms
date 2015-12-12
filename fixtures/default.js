@@ -63,7 +63,9 @@ module.exports = _.merge({
              */
             input: {
                 //Replace VAR1 with the name of an expected input, and add more inputs as needed.
-                VAR1: 'foo'
+                phone: '2404189814',
+                message: 'Test',
+                from: '+14433398376'
             }
         }
     }

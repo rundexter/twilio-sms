@@ -1,3 +1,5 @@
+var twilio = require('twilio');
+
 module.exports = {
     /**
      * The main entry point for the Dexter module
@@ -6,8 +8,28 @@ module.exports = {
      * @param {AppData} dexter Container for all data used in this workflow.
      */
     run: function(step, dexter) {
-        var results = { foo: 'bar' };
-        //Call this.complete with the module's output.  If there's an error, call this.fail(message) instead.
-        this.complete(results);
+        var sid   = dexter.environment('TWILIO_ACCOUNT_SID')
+          , token = dexter.environment('TWILIO_AUTH_TOKEN')
+          , phone = step.input('phone').first()
+          , msg   = step.input('message').first()
+          , from  = step.input('from').first()
+        ;
+
+        if(!sid)   return this.fail('TWILIO_ACCOUNT_SID environment variable must be set');
+        if(!token) return this.fail('TWILIO_AUTH_TOKEN environment variable must be set');
+        if(!phone) return this.fail('phone required');
+        if(!msg)   return this.fail('message is required');
+        if(!from)  return this.fail('from phone number is required');
+
+        twilio(sid,token).sendMessage({
+            to: phone
+            , body: msg
+            , from: from
+        }, function(err) {
+            return err 
+                ? this.fail(err)
+                : this.complete({})
+            ;
+        }.bind(this));
     }
 };
