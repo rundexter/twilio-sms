@@ -12,6 +12,9 @@
     }, {
         "id": "from",
         "title":"From"
+    }, {
+        "id": "mediaUrl",
+        "title": "Media URL"
     }],
     //Required. Outputs the module emits.
     "outputs": [

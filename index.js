@@ -13,6 +13,8 @@ module.exports = {
           , phone = step.input('phone').first()
           , msg   = step.input('message').first()
           , from  = step.input('from').first()
+          , mediaUrl = step.input('mediaUrl').first()
+          , data 
         ;
 
         if(!sid)   return this.fail('TWILIO_ACCOUNT_SID environment variable must be set');
@@ -21,15 +23,20 @@ module.exports = {
         if(!msg)   return this.fail('message is required');
         if(!from)  return this.fail('from phone number is required');
 
-        twilio(sid,token).sendMessage({
+        data = {
             to: phone
             , body: msg
             , from: from
-        }, function(err) {
-            return err 
-                ? this.fail(err)
-                : this.complete({})
-            ;
-        }.bind(this));
+        };
+
+        if(mediaUrl) data.mediaUrl = mediaUrl;
+
+        twilio(sid,token).sendMessage(data
+          , function(err) {
+              return err 
+                  ? this.fail(err)
+                  : this.complete({})
+              ;
+          }.bind(this));
     }
 };
