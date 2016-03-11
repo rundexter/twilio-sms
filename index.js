@@ -20,7 +20,7 @@ module.exports = {
         if(!sid)   return this.fail('TWILIO_ACCOUNT_SID environment variable must be set');
         if(!token) return this.fail('TWILIO_AUTH_TOKEN environment variable must be set');
         if(!phone) return this.fail('phone required');
-        if(!msg)   return this.fail('message is required');
+        if(!msg && !mediaUrl)   return this.fail('message or mediaUrl is required');
         if(!from)  return this.fail('from phone number is required');
 
         data = {
