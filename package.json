@@ -1,6 +1,6 @@
 {
   "name": "twilio-sms",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Send an SMS message using your Twilio account",
   "main": "index.js",
   "author": "Run Dexter, Inc.",
